@@ -1,0 +1,29 @@
+{
+  "Parameters": {
+    "Region": {
+      "Description": "The region the beanstalk env is in",
+      "Default": "us-east-1",
+      "Type": "String",
+      "ConstraintDescription": "must contain only alphanumeric characters"
+    },
+    "CnamePrefix" : {
+      "Type" : "String",
+      "Description" : "The CnamePrefix being used for this application."
+    }
+  },
+  "Resources": {
+    "DnsRecord": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "HostedZoneName": "joyful-noise.link.",
+        "Name": {"Fn::Join": [ ".", [{ "Ref": "CnamePrefix" }, "joyful-noise.link"]]},
+        "Type": "CNAME",
+        "TTL": "300",
+        "ResourceRecords": [
+            {"Fn::Join": [ ".", [{ "Ref": "CnamePrefix" }, { "Ref": "Region" }, "elasticbeanstalk.com."]]}
+        ]
+      }
+    }
+  }
+}
+

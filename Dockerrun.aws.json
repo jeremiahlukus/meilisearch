@@ -1,0 +1,21 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "networkMode": "bridge",
+  "family": "application-stack",
+  "containerDefinitions": [
+    {
+      "name": "tabs",
+      "image": "getmeili/meilisearch:v0.30",
+      "essential": true,
+      "memory": 1700,
+      "cpu": "1024",
+      "portMappings": [
+	{
+	  "hostPort": 80,
+	  "containerPort": 80
+	}
+      ]
+    }
+  ]
+}
+
