@@ -31,6 +31,9 @@ common:
       option_name: RootVolumeSize
       value: "16"
 
+    - namespace: aws:elb:loadbalancer
+      option_name: SSLCertificateId
+      value: arn:aws:acm:us-east-1:267897273784:certificate/870617c3-191b-476d-8a8a-b66c1b358408
     - namespace: aws:autoscaling:asg
       option_name: Cooldown
       value: "1200"
